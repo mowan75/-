@@ -1,0 +1,38 @@
+import json
+from pathlib import Path
+from core.file_organizer import FileOrganizer
+from core.report_generator import ReportGenerator
+from core.system_monitor import SystemMonitor
+from core.email_agent import EmailAgent
+from core.logger import Logger
+
+class OfficeAssistant:
+    def __init__(self, config_path="config.json"):
+        self.config = json.load(open(config_path, "r", encoding="utf-8"))
+        self.file_org = FileOrganizer(self.config)
+        self.reporter = ReportGenerator(self.config)
+        self.monitor = SystemMonitor(self.config)
+        self.email = EmailAgent(self.config)
+        Logger.info("智能办公助理初始化完成")
+
+    def organize_files(self):
+        Logger.info("开始自动文件整理")
+        return self.file_org.organize()
+
+    def generate_daily_report(self):
+        Logger.info("开始生成日报")
+        return self.reporter.generate()
+
+    def monitor_system(self):
+        Logger.info("开始系统巡检")
+        return self.monitor.check()
+
+    def check_emails(self):
+        Logger.info("开始检查未读邮件")
+        return self.email.fetch_unread()
+
+    def run_all(self):
+        self.organize_files()
+        self.monitor_system()
+        self.check_emails()
+        self.generate_daily_report()
