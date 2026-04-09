@@ -1,0 +1,10 @@
+from core.assistant import OfficeAssistant
+from core.scheduler import Scheduler
+
+if __name__ == "__main__":
+    assistant = OfficeAssistant()
+    assistant.run_all()
+
+    # 启动后台定时任务
+    scheduler = Scheduler(assistant)
+    scheduler.start()
