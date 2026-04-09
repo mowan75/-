@@ -1,0 +1,33 @@
+{
+  "file_organizer": {
+    "watch_paths": ["~/Desktop", "~/Downloads"],
+    "target_root": "~/Documents/AutoOffice/file_archive",
+    "enable_auto_organize": true
+  },
+  "daily_report": {
+    "output_dir": "~/Documents/AutoOffice/daily_reports",
+    "auto_generate": true,
+    "generate_pdf": true
+  },
+  "system_monitor": {
+    "disk_alert_threshold": 90,
+    "mem_alert_threshold": 90,
+    "check_interval_minutes": 60
+  },
+  "email_accounts": [
+    {
+      "name": "work",
+      "title": "工作邮箱",
+      "imap_host": "imap.qq.com",
+      "imap_port": 993,
+      "user": "your-work@qq.com",
+      "password": "your-auth-code"
+    }
+  ],
+  "schedule": {
+    "organize_cron": "0 18 * * *",
+    "report_cron": "0 20 * * *",
+    "monitor_cron": "0 */1 * * *"
+  },
+  "alert_notify": true
+}
